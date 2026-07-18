@@ -1,0 +1,64 @@
+import java.util.Scanner;
+
+public class SenderReceiver {
+
+    static void sender() {
+        System.out.println("Sender : Hi");
+    }
+
+    static void receiver() {
+        System.out.println("Receiver : Hello");
+        System.out.println("Receiver : What do you want?");
+    }
+
+    static void operation(String op, int a, int b) {
+        switch (op) {
+            case "+":
+                System.out.println("Result = " + (a + b));
+                break;
+
+            case "-":
+                System.out.println("Result = " + (a - b));
+                break;
+
+            case "*":
+                System.out.println("Result = " + (a * b));
+                break;
+
+            case "/":
+                if (b != 0)
+                    System.out.println("Result = " + (a / b));
+                else
+                    System.out.println("Cannot divide by zero");
+                break;
+
+            default:
+                System.out.println("Receiver : Bye");
+        }
+    }
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        sender();
+        receiver();
+
+        System.out.print("Enter operation (+, -, *, /): ");
+        String op = sc.next();
+
+        if (op.equals("+") || op.equals("-") || op.equals("*") || op.equals("/")) {
+            System.out.print("Enter first number: ");
+            int a = sc.nextInt();
+
+            System.out.print("Enter second number: ");
+            int b = sc.nextInt();
+
+            operation(op, a, b);
+        } else {
+            operation(op, 0, 0);
+        }
+
+        sc.close();
+    }
+}
